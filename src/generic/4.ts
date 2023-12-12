@@ -2,23 +2,16 @@
   Використовуйте generics та інтерфейси, щоб виправити помилку в наступних класах:
 */
 
-
-type PublicProps = {
-
-}
-class Component<T extends PublicProps> {
-  constructor (public props:T) {
-}
-}
-
-interface PerPAge extends PublicProps{
+interface PropsT {
   title: string;
-};
+}
 
-class Page extends Component<PerPAge> {
-  pageInfo () {
+class Component<T extends PropsT> {
+  constructor(public props: T) {}
+}
+
+class Page extends Component<{ title: string }> {
+  pageInfo() {
     console.log(this.props.title);
   }
 }
-
-export {};
